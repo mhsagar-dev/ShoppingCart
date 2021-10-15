@@ -1,0 +1,10 @@
+.product{
+    display: flex;
+    border-bottom: 1px solid gray;
+    margin-bottom: 5px;
+    padding-bottom:5px;
+}
+
+.pd-name{
+    font-weight: 400;
+}
