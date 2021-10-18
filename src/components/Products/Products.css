@@ -1,6 +1,6 @@
 .product{
     display: flex;
-    border-bottom: 1px solid gray;
+    border: 1px solid gray;
     margin-bottom: 5px;
     padding:10px;
 }
@@ -11,4 +11,5 @@
 
 .pd-name{
     font-weight: 400;
+    color: blue;
 }
