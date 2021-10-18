@@ -47,6 +47,11 @@ const Review = () => {
                                 product={pd}>
                             </ReviewItem>)
                         }
+                        {
+                            orderPlaced && <div className="container">
+                               <h1>Your Order Has Been Placed. Thanks. :-)</h1>
+                            </div>
+                        }
                     </div>
                     <div style={{ height: '260px', border: '1px solid gray' }} className="col-md-3 rounded offset-md-1 container bg-light">
                         <Cart cart={cart}>
