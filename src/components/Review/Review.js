@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import fakeData from '../../fakeData';
 import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
@@ -10,11 +10,12 @@ const Review = () => {
 
     const [cart, setCart] = useState([]);
     const [orderPlaced, setOrderPlaced] = useState(false);
+    const history = useHistory()
 
-    const placeOrder = () => {
-        setCart([]);
-        setOrderPlaced(true);
-        processOrder();
+    
+
+    const proceedCheckout = () => {
+       history.push('/shipment');
     }
 
     const removeCart = (productKey) => {
@@ -47,17 +48,10 @@ const Review = () => {
                                 product={pd}>
                             </ReviewItem>)
                         }
-                        {
-                            orderPlaced && <div className="container">
-                               <h1>Your Order Has Been Placed. Thanks. :-)</h1>
-                            </div>
-                        }
                     </div>
                     <div style={{ height: '260px', border: '1px solid gray' }} className="col-md-3 rounded offset-md-1 container bg-light">
                         <Cart cart={cart}>
-                            <Link to='/review'>
-                                <button onClick={placeOrder} className='btn btn-danger form-control'> Place Order </button>
-                            </Link>
+                                <button onClick={proceedCheckout} className='btn btn-danger form-control'> Proceed Checkout </button>
                         </Cart>
                     </div>
                 </main>
