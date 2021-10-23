@@ -5,12 +5,12 @@ import './Products.css'
 import { Link } from 'react-router-dom';
 
 const Products = (props) => {
-    const { img, name, seller, price, stock, key } = props.product;
+    const { imgURL, name, seller, price, stock, key } = props.product;
     return (
         <div className="col-md-3 mt-5">
             <div class="card bg-light">
-                <img className ="card-img-top" src={img} alt="Card image cap" />
-                <div style={{ height: '400px' }} class="card-body">
+                <img style={{ height:"220px"}} className ="card-img-top" src={imgURL} alt="Card image cap" />
+                <div style={{ height: '220px' }} class="card-body">
                     <p className="card-title text-center">{name}</p>
                     <h1 className ="card-text text-center">${price}</h1>
                     <p className ="text-center">Seller: {seller}</p>

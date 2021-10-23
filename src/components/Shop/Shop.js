@@ -1,27 +1,34 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import fakeData from '../../fakeData';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import Header from '../Header/Header';
 import Products from '../Products/Products';
 
 const Shop = () => {
-    const first5 = fakeData.slice(0, 12);
-    const [products, setProducts] = useState(first5);
+    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/products')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    })
 
     useEffect(() => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-        const previousCart = productKeys.map(existingKey => {
-            const product = fakeData.find(pd => pd.key === existingKey);
-            product.quantity = savedCart[existingKey];
-            return product;
+        fetch('http://localhost:8000/productsByKeys', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(productKeys)
         })
-        setCart(previousCart);
-    }, []);
+            .then(res => res.json())
+            .then(data => setCart(data))
+    }, [products]);
 
     const handleAddToCart = (product) => {
         const toBeAddedKey = product.key;
