@@ -16,6 +16,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { createContext } from "react";
 import { useState } from "react";
 import Login from "./components/Login/Login";
+import Footer from "./components/Footer/Footer";
 
 export const UserContext = createContext();
 
@@ -53,6 +54,7 @@ function App() {
             <NotFound></NotFound>
           </Route>
         </Switch>
+        <Footer></Footer>
       </Router>
     </UserContext.Provider>
   );
