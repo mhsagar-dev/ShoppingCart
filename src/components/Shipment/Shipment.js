@@ -28,7 +28,7 @@ const Shipment = () => {
             orderTime: new Date()
         };
 
-        fetch('http://localhost:8000/addOrder', {
+        fetch('https://nameless-reaches-00400.herokuapp.com/addOrder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

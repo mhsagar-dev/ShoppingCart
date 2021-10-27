@@ -21,7 +21,7 @@ const Inventory = () => {
         };
 
         console.log(data);
-        const url = `http://localhost:8000/addProducts`;
+        const url = `https://nameless-reaches-00400.herokuapp.com/addProducts`;
         console.log(productData);
 
         fetch(url, {
