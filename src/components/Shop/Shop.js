@@ -10,13 +10,12 @@ import { Spinner } from 'react-bootstrap';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-    const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:8000/products?search'+search)
+        fetch('http://localhost:8000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [search]);
+    }, []);
 
     useEffect(() => {
         const savedCart = getDatabaseCart();
@@ -32,9 +31,6 @@ const Shop = () => {
             .then(data => setCart(data))
     }, [products]);
 
-    const handleSearch = event =>{
-        setSearch(event.target.value);
-    }
 
     const handleAddToCart = (product) => {
         const toBeAddedKey = product.key;
@@ -65,9 +61,6 @@ const Shop = () => {
                             <button className='btn btn-danger form-control'> Review Order </button>
                         </Link>
                     </Cart>
-                </div>
-                <div className='container col-md-5'>
-                    <input style={{border: '1px solid gray'}} placeholder='Search a product here' onBlur={handleSearch} className='mt-3 mb-3 form-control' type="text" />
                 </div>
                 <main className='row'>
                     {
